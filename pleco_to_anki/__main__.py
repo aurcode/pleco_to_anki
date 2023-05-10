@@ -62,11 +62,11 @@ def format_pleco_export(path, deck_name):
     )
     deck = genanki.Deck(hash(deck_name), deck_name)
     for phrase in phrases:
-        path=''.join(re.findall(r'[\u4e00-\u9fffa-zA-Z0-9]+',phrase.front_html()))
+        path=''.join(re.findall(r'[\u4e00-\u9fffa-zA-Z0-9]+',phrase.front_html())).split('spanclassverylargecenter')[1].split('span')[0]
         mediaName = file(path)
         mediaList.append(mediaName)
         soundName = '[sound:' + mediaName + ']'
-        talk(phrase.front_html(),'',path)
+        talk(''.join(re.findall(r'[\u4e00-\u9fffa-zA-Z0-9]+',phrase.front_html())).split('spanclassverylargecenter')[1].split('span')[0],'',path)
         #if phrase.chinese in existing_phrases:
             #continue
         note = genanki.Note(
