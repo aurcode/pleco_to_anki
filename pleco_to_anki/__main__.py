@@ -2,6 +2,7 @@ import os
 import sys
 import re
 import genanki
+from gtts import gTTS
 
 from constants import css
 from models import Phrase
