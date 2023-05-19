@@ -2,6 +2,9 @@ import os
 import sys
 import re
 import genanki
+
+from datetime import datetime
+
 from gtts import gTTS
 
 from constants import css
@@ -75,6 +78,7 @@ def format_pleco_export(path, deck_name):
                 phrase.front_html(),
                 phrase.back_html(),
                 soundName,
+                tags=[str(datetime.now())],
             ],
         )
         deck.add_note(note)
