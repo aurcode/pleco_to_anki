@@ -67,7 +67,7 @@ def format_pleco_export(path, deck_name, categories):
     today='-'.join([str(i) for i in [datetime.now().year,datetime.now().month,datetime.now().day]])
     tags = []
     tags.append(today)
-    [tags.append(i) for i in categories]
+    [tags.append("pleco:"+str(i).upper()) for i in categories]
     for phrase in phrases:
         path=''.join(re.findall(r'[\u4e00-\u9fffa-zA-Z0-9]+',phrase.front_html())).split('spanclassverylargecenter')[1].split('span')[0]
         mediaName = file(path)
