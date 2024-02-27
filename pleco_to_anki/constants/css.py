@@ -2,17 +2,18 @@
 # and opacity is separately set
 
 CSS = r'''
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+	text-align: center;
   font-family: 'Avenir LT Std';
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  background-color: white;
   border-radius: 20px;
   padding: 20px;
 }
@@ -30,8 +31,6 @@ h1 {
 h2 {
   font-weight: 500;
   font-size: 16px;
-  color: #000;
-  opacity: 0.6;
   margin-bottom: 44px;
 }
 
@@ -44,8 +43,6 @@ h2 {
 }
 
 .tags {
-  color: #000;
-  opacity: 0.2;
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
@@ -81,7 +78,6 @@ ol li {
 
 .example {
   display: flex;
-  color: rgb(90, 115, 180);
   margin-bottom: 14px;
 }
 
@@ -89,7 +85,6 @@ ol li {
   width: 6px;
   height: 6px;
   border-radius: 3px;
-  background-color: rgb(90, 115, 180);
   margin-top: 8px;
   margin-right: 10px;
 }
