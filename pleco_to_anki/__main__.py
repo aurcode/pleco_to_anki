@@ -95,7 +95,7 @@ if __name__ == '__main__':
     wd = os.path.dirname(os.path.dirname(__file__))
     os.chdir(wd)
     args = sys.argv[1:3]
-    cat = sys.argv[:3]
+    cat = sys.argv[3:]
     if len(sys.argv[1:]) < 2:
         print("You have only", sys.argv[1:], "arguments.")
         print('Usage: python3 pleco_to_anki <pleco_file> <deck_name> <category>')
