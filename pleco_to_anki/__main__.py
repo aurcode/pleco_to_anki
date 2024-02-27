@@ -39,7 +39,7 @@ def read_and_extract_phrases(path):
         return phrases
 
 
-def format_pleco_export(path, deck_name):
+def format_pleco_export(path, deck_name, categories):
     phrases = read_and_extract_phrases(path)
     mediaList = []
     file = lambda text : str(text)+'-zh.mp3'
@@ -64,18 +64,21 @@ def format_pleco_export(path, deck_name):
         css=css.CSS,
     )
     deck = genanki.Deck(hash(deck_name), deck_name)
+    today='-'.join([str(i) for i in [datetime.now().year,datetime.now().month,datetime.now().day]])
+    tags = []
+    tags.append(today)
+    [tags.append(i) for i in categories]
     for phrase in phrases:
         path=''.join(re.findall(r'[\u4e00-\u9fffa-zA-Z0-9]+',phrase.front_html())).split('spanclassverylargecenter')[1].split('span')[0]
         mediaName = file(path)
         mediaList.append(mediaName)
         soundName = '[sound:' + mediaName + ']'
-        today='-'.join([str(i) for i in [datetime.now().year,datetime.now().month,datetime.now().day]])
         talk(''.join(re.findall(r'[\u4e00-\u9fffa-zA-Z0-9]+',phrase.front_html())).split('spanclassverylargecenter')[1].split('span')[0],'',path)
         #if phrase.chinese in existing_phrases:
             #continue
         note = genanki.Note(
             model=model,
-            tags=[today],
+            tags=tags,
             fields=[
                 phrase.front_html(),
                 phrase.back_html(),
@@ -91,8 +94,9 @@ def format_pleco_export(path, deck_name):
 if __name__ == '__main__':
     wd = os.path.dirname(os.path.dirname(__file__))
     os.chdir(wd)
-    args = sys.argv[1:]
-    if len(args) != 2:
-        print('Usage: python3 pleco_to_anki <pleco_file> <deck_name>')
+    args = sys.argv[1:3]
+    cat = sys.argv[:3]
+    if len(sys.argv[1:]) != 2:
+        print('Usage: python3 pleco_to_anki <pleco_file> <deck_name> <category>')
     else:
-        format_pleco_export(*args)
+        format_pleco_export(*args,cat)
