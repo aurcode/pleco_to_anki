@@ -97,6 +97,7 @@ if __name__ == '__main__':
     args = sys.argv[1:3]
     cat = sys.argv[:3]
     if len(sys.argv[1:]) > 2:
+        print("You have only", sys.argv[1:], "arguments."
         print('Usage: python3 pleco_to_anki <pleco_file> <deck_name> <category>')
     else:
         format_pleco_export(*args,cat)
